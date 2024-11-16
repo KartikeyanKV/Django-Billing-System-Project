@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    
+    {% block contents   %}
+
+    <h1>Order Add page</h1>
+
+    <a href="/ordermanagement/orders/">
+        <button>Back</button>
+    </a>
+
+
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{order_form}}
+        <input type="submit">
+    </form>
+
+
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% extends 'base.html' %}
+    
+    {% block contents   %}
+
+    <h1>Orders List Page</h1>
+
+    <a href="/ordermanagement/orders/add/">
+        <button>Add Orders</button>
+    </a>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Order Number</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>GST</th>
+                <th>Bill Amount</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for order in all_orders %}
+
+            <tr>
+                <td>{{order.Product_reference}}</td>
+                <td>{{order.customer_reference}}</td>
+                <td>{{order.order_number}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.gst}}</td>
+                <td>{{order.bill_amount}}</td>
+
+                <td>
+                    <a href="{% url 'orderupdate' order.id %}">
+                        <button >Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'orderdelete' order.id %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+
+
+
+
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    
+    {% block contents   %}
+    <h1>Customers List Page</h1>
+
+    <a href="/ordermanagement/customers/add/">
+        <button>Add Customers</button>
+    </a>
+
+
+
+
+
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for customer in all_customers %}
+
+            <tr>
+                <td>{{customer.customer_name}}</td>
+                <td>{{customer.customer_date}}</td>
+                <td>
+                    <a href="{% url 'customerupdate' customer.id %}">
+                        <button >Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'customerdelete' customer.id %}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+
+
+
+
+    {% endblock %}
+    
+</body>
+</html>
